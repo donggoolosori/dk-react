@@ -1,18 +1,39 @@
+/** @jsx h */
+function h(type, props, ...children) {
+  return { type, props, children: children.flat() };
+}
+
+const createElement = (node) => {
+  if (typeof node === 'string') {
+    return document.createTextNode(node);
+  }
+
+  const $el = document.createElement(node.type);
+
+  Object.entries(node.props ?? {}).forEach(([attr, value]) =>
+    $el.setAttribute(attr, value)
+  );
+
+  node.children.map((child) => $el.appendChild(createElement(child)));
+
+  return $el;
+};
+
 const state = [
   { id: 1, completed: false, content: 'todo list item 1' },
   { id: 2, completed: true, content: 'todo list item 2' },
 ];
 
-const vm = (
+const virtualDom = (
   <div id="app">
     <ul>
-      {state.map(({ completed, content }) => {
-        <li class={completed ? 'completed' : null}>
-          <input type="checkbox" class="toggle" checked={completed} />
+      {state.map(({ completed, content }) => (
+        <li className={completed ? 'completed' : null}>
+          <input type="checkbox" className="toggle" checked={completed} />
           {content}
-          <button class="remove">삭제</button>
-        </li>;
-      })}
+          <button className="remove">삭제</button>
+        </li>
+      ))}
     </ul>
     <form>
       <input type="text" />
@@ -21,8 +42,6 @@ const vm = (
   </div>
 );
 
-const $root = document.body.querySelector('#root');
+const realDom = createElement(virtualDom);
 
-$root.innerHTML = `
-  <pre>${JSON.stringify(vm, null, 2)}</pre>
-`;
+document.body.appendChild(realDom);
