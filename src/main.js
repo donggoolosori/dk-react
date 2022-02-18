@@ -1,4 +1,4 @@
-import createElement from './createElement';
+import render from './render';
 
 /** @jsx h */
 function h(type, props, ...children) {
@@ -28,6 +28,4 @@ const virtualDom = (
   </div>
 );
 
-const realDom = createElement(virtualDom);
-
-document.body.appendChild(realDom);
+render(virtualDom, document.getElementById('root'));
