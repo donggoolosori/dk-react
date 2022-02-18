@@ -1,23 +1,9 @@
+import createElement from './createElement';
+
 /** @jsx h */
 function h(type, props, ...children) {
   return { type, props, children: children.flat() };
 }
-
-const createElement = (node) => {
-  if (typeof node === 'string') {
-    return document.createTextNode(node);
-  }
-
-  const $el = document.createElement(node.type);
-
-  Object.entries(node.props ?? {}).forEach(([attr, value]) =>
-    $el.setAttribute(attr, value)
-  );
-
-  node.children.map((child) => $el.appendChild(createElement(child)));
-
-  return $el;
-};
 
 const state = [
   { id: 1, completed: false, content: 'todo list item 1' },
