@@ -1,15 +1,11 @@
-import render from './render';
-
-/** @jsx h */
-function h(type, props, ...children) {
-  return { type, props, children: children.flat() };
-}
+import DkReact from '.';
 
 const state = [
   { id: 1, completed: false, content: 'todo list item 1' },
   { id: 2, completed: true, content: 'todo list item 2' },
 ];
 
+/** @jsx DkReact.createElement */
 const virtualDom = (
   <div id="app">
     <ul>
@@ -28,4 +24,4 @@ const virtualDom = (
   </div>
 );
 
-render(virtualDom, document.getElementById('root'));
+console.log(virtualDom);

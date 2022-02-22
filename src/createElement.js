@@ -11,11 +11,3 @@ export default function createElement(type, props, ...children) {
     },
   };
 }
-
-console.log(
-  JSON.stringify(
-    createElement('h1', { class: 'title' }, createElement('p', null, 'hi')),
-    null,
-    2
-  )
-);
