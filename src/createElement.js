@@ -1,17 +1,19 @@
-const createElement = (node) => {
-  if (typeof node === 'string') {
-    return document.createTextNode(node);
-  }
+function createElement(type, props, ...children) {
+  return {
+    type,
+    props: {
+      ...props,
+      children,
+    },
+  };
+}
 
-  const $el = document.createElement(node.type);
-
-  Object.entries(node.props ?? {}).forEach(([attr, value]) =>
-    $el.setAttribute(attr, value)
-  );
-
-  node.children.map((child) => $el.appendChild(createElement(child)));
-
-  return $el;
-};
+console.log(
+  JSON.stringify(
+    createElement('h1', { class: 'title' }, createElement('p', null, 'hi')),
+    null,
+    2
+  )
+);
 
 export default createElement;

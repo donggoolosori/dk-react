@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "babel": "babel src --out-dir dist",
     "build": "webpack --mode=production --no-devtool"
