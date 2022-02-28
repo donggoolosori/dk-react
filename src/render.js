@@ -57,12 +57,12 @@ function performUnitOfWork(fiber) {
   let prevSibling = null;
 
   for (let index = 0; index < children.length; index++) {
-    const { type, props, parent } = children[index];
+    const { type, props } = children[index];
 
     const newFiber = {
       type,
       props,
-      parent,
+      parent: fiber,
       dom: null,
     };
 
