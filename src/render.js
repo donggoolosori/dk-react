@@ -54,10 +54,9 @@ function performUnitOfWork(fiber) {
 
   const { children } = fiber.props;
 
-  let index = 0;
   let prevSibling = null;
 
-  while (index < children.length) {
+  for (let index = 0; index < children.length; index++) {
     const { type, props, parent } = children[index];
 
     const newFiber = {
@@ -74,7 +73,6 @@ function performUnitOfWork(fiber) {
     }
 
     prevSibling = newFiber;
-    index++;
   }
 
   if (fiber.child) {
