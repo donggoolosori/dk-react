@@ -1,7 +1,7 @@
 import createDom from './createDom';
 import updateDom from './updateDom';
 
-export default function render(element, container) {
+export function render(element, container) {
   wipRoot = {
     dom: container,
     props: {
@@ -107,7 +107,7 @@ function updateFunctionComponent(fiber) {
   reconcileChildren(fiber, children);
 }
 
-function useState(initial) {
+export function useState(initial) {
   const oldHook =
     wipFiber.alternate &&
     wipFiber.alternate.hooks &&
@@ -124,6 +124,7 @@ function useState(initial) {
 
   const setState = (action) => {
     hook.queue.push(action);
+
     wipRoot = {
       dom: currentRoot.dom,
       props: currentRoot.props,

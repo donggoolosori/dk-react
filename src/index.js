@@ -1,9 +1,10 @@
 import createElement from './createElement';
-import render from './render';
+import { render, useState } from './render';
 
 const DkReact = {
   createElement,
   render,
+  useState,
 };
 
 export default DkReact;
