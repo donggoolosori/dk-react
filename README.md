@@ -70,7 +70,7 @@ performUnitOfWork가 실제 렌더링 작업을 수행하는 함수입니다.
 자식 element 들의 재조정을 위한 reconcileChildren 함수를 호출하고,
 다음 작업을 return 합니다.
 여기서 fiber는 element 하나를 나타냄과 동시에 하나의 작업 단위를 의미합니다.
-fiber들은 연결리스트의 형태로 서로 연결돼있습니다.
+fiber들은 트리 형태로 서로 연결돼있습니다.
 ```js
 function performUnitOfWork(fiber) {
   if (!fiber.dom) {
