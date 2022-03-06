@@ -25,7 +25,7 @@ function commitWork(fiber) {
   if (!fiber) return;
 
   let domParentFiber = fiber.parent;
-  while (!domParentFiber) {
+  while (!domParentFiber.dom) {
     domParentFiber = domParentFiber.parent;
   }
   const domParent = domParentFiber.dom;
