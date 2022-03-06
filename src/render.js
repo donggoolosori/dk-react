@@ -117,7 +117,8 @@ function reconcileChildren(wipFiber, elements) {
     }
 
     if (oldFiber && !sameType) {
-      (oldFiber.effectTag = 'DELETION'), deletions.push(oldFiber);
+      oldFiber.effectTag = 'DELETION';
+      deletions.push(oldFiber);
     }
 
     if (oldFiber) {
