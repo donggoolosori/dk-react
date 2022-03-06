@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "babel": "babel src --out-dir dist",
-    "build": "webpack --mode=production --no-devtool"
+    "build": "webpack --mode=production --no-devtool",
+    "dev":"webpack-dev-server"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
